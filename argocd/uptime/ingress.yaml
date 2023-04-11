@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: uptime
+  name: uptime-kuma-ingress
+  annotations:
+    # custom max body size for file uploading like backing image uploading
+    # nginx.ingress.kubernetes.io/proxy-body-size: 10000m
+    # nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: uptime.int.alex-j-butler.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: uptime-kuma-svc
+            port:
+              number: 80

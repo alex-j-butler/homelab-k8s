@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: 3cx-sbc-testing
+  name: deployment
+  namespace: 3cx-sbc-testing
+spec:
+  selector:
+    matchLabels:
+      app: 3cx-sbc-testing
+  replicas: 1
+  strategy:
+    type: Recreate
+
+  template:
+    metadata:
+      labels:
+        app: 3cx-sbc-testing
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/apyos/docker-3cx-sbc:18.1.36
+          ports:
+            - containerPort: 5060
+            - containerPort: 5061

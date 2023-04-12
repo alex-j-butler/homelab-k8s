@@ -25,3 +25,13 @@ spec:
             name: docs-external-service
             port:
               number: 80
+  - host: homeassistant.alex-j-butler.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: hassio-external-service
+            port:
+              number: 80

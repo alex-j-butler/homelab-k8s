@@ -14,8 +14,21 @@ spec:
   - hosts:
     - uptime.int.alex-j-butler.com
     secretName: uptime-tls
+  - hosts:
+    - uptime.alex-j-butler.com
+    secretName: uptime-prod-tls
   rules:
   - host: uptime.int.alex-j-butler.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: uptime-kuma-svc
+            port:
+              number: 3001
+  - host: uptime.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

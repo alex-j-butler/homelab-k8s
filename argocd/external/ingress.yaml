@@ -24,4 +24,4 @@ spec:
           service:
             name: docs-external-endpoint
             port:
-              number: 80
+              number: 1240

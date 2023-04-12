@@ -6,7 +6,7 @@ metadata:
 spec:
   ports:
   - name: docs-external-app
-    port: 80
+    port: 1240
     protocol: TCP
     targetPort: 1240
   clusterIP: None

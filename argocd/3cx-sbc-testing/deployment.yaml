@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: 3cx-sbc-testing
-  name: deployment
+  name: 3cx-sbc-ha
   namespace: 3cx-sbc-testing
 spec:
   selector:
@@ -24,3 +24,14 @@ spec:
           ports:
             - containerPort: 5060
             - containerPort: 5061
+          env:
+            - name: PBX_URL
+              valueFrom:
+                secretKeyRef:
+                  name: 3cx-sbc-details
+                  key: url
+            - name: PBX_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: 3cx-sbc-details
+                  key: key

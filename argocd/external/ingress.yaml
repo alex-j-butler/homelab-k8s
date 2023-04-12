@@ -22,6 +22,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: docs-external-endpoint
+            name: docs-external-service
             port:
               number: 80

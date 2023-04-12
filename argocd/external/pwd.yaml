@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: external
+  name: pwd-external-service
+spec:
+  ports:
+  - name: pwd-external-app
+    port: 80
+    protocol: TCP
+    targetPort: 1241
+  clusterIP: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  namespace: external
+  name: pwd-external-service
+subsets:
+- addresses:
+  - ip: 10.0.3.3
+  ports:
+  - name: pwd-external-app
+    port: 1241
+    protocol: TCP

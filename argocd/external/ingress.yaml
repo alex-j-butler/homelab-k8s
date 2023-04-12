@@ -15,6 +15,9 @@ spec:
     - docs.alex-j-butler.com
     secretName: docs-external-tls
   - hosts:
+    - pwd.alex-j-butler.com
+    secretName: docs-external-tls
+  - hosts:
     - homeassistant.alex-j-butler.com
     secretName: hassio-external-tls
   - hosts:
@@ -29,6 +32,16 @@ spec:
         backend:
           service:
             name: docs-external-service
+            port:
+              number: 80
+  - host: pwd.alex-j-butler.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: pwd-external-service
             port:
               number: 80
   - host: homeassistant.alex-j-butler.com

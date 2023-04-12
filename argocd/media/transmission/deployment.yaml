@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: transmission
+  name: transmission
+  namespace: media
+spec:
+  selector:
+    matchLabels:
+      app: transmission
+  replicas: 1
+  strategy:
+    type: Recreate
+
+  template:
+    metadata:
+      labels:
+        app: transmission
+    spec:
+      containers:
+        - name: transmission
+          image: haugene/transmission-openvpn
+          ports:
+            - containerPort: 9091
+#          volumeMounts:
+#            - mountPath: /data
+#              name: data
+#            - mountPath: /config
+#              name: config
+          env:
+            - name: "OPENVPN_PROVIDER"
+              value: "MULLVAD"
+            - name: "OPENVPN_CONFIG"
+              value: "au_bne"
+            - name: "OPENVPN_USERNAME"
+              valueFrom:
+                secretKeyRef:
+                  name: openvpn
+                  key: password
+            - name: "OPENVPN_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: openvpn
+                  key: password
+            - name: "LOCAL_NETWORK"
+              value: "10.244.0.0/16"
+
+#      volumes:
+#        - name: data
+#          persistentVolumeClaim:
+#            claimName: data-transmission-pvc
+#        - name: config
+#          persistentVolumeClaim:
+#            claimName: config-transmission-pvc

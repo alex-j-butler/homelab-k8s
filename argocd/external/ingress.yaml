@@ -14,6 +14,9 @@ spec:
   - hosts:
     - docs.alex-j-butler.com
     secretName: docs-external-tls
+  - hosts:
+    - homeassistant.alex-j-butler.com
+    secretName: hassio-external-tls
   rules:
   - host: docs.alex-j-butler.com
     http:

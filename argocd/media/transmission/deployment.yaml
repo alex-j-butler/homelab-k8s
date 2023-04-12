@@ -18,13 +18,24 @@ spec:
       labels:
         app: transmission
     spec:
+      initContainers:
+      - name: init-custom-ovpn
+        image: debian:stable-slim
+        command: ["/bin/sh", "-c"]
+        args: ["cp /custom-ovpn-ro/* /custom-ovpn-rw"]
+        volumeMounts:
+        - name: custom-ovpn-rw
+          mountPath: /custom-ovpn-rw
+          readOnly: false
+        - name: custom-ovpn
+          mountPath: /custom-ovpn-ro
       containers:
         - name: transmission
           image: haugene/transmission-openvpn
           ports:
             - containerPort: 9091
           volumeMounts:
-            - name: custom-ovpn
+            - name: custom-ovpn-rw
               mountPath: /etc/openvpn/custom/
 #          volumeMounts:
 #            - mountPath: /data
@@ -57,6 +68,8 @@ spec:
         - name: custom-ovpn
           configMap:
             name: custom-ovpn
+        - name: custom-ovpn-rw
+          emptyDir: {}
 #      volumes:
 #        - name: data
 #          persistentVolumeClaim:

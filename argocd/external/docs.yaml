@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: external
+  name: docs-external-service
+spec:
+  ports:
+  - name: docs-external-app
+    port: 80
+    protocol: TCP
+    targetPort: 1240
+  clusterIP: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  namespace: external
+  name: docs-external-endpoint
+subsets:
+- addresses:
+  - ip: 10.0.3.3
+  ports:
+  - name: docs-external
+    port: 1240
+    protocol: TCP

@@ -16,7 +16,7 @@ spec:
     secretName: docs-external-tls
   - hosts:
     - pwd.alex-j-butler.com
-    secretName: docs-external-tls
+    secretName: pwd-external-tls
   - hosts:
     - homeassistant.alex-j-butler.com
     secretName: hassio-external-tls

@@ -17,6 +17,9 @@ spec:
   - hosts:
     - homeassistant.alex-j-butler.com
     secretName: hassio-external-tls
+  - hosts:
+    - plex.alex-j-butler.com
+    secretName: plex-external-tls
   rules:
   - host: docs.alex-j-butler.com
     http:
@@ -36,5 +39,43 @@ spec:
         backend:
           service:
             name: hassio-external-service
+            port:
+              number: 80
+  - host: plex.alex-j-butler.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: plex-external-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/sonarr"
+        backend:
+          service:
+            name: sonarr-external-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/radarr"
+        backend:
+          service:
+            name: radarr-external-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/bazarr"
+        backend:
+          service:
+            name: bazarr-external-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/stats"
+        backend:
+          service:
+            name: stats-external-service
             port:
               number: 80

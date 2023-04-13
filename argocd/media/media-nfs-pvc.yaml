@@ -1,0 +1,9 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: media
+  name: media-nfs-pvc
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany

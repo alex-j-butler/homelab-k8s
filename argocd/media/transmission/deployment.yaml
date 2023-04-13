@@ -37,6 +37,8 @@ spec:
           volumeMounts:
             - name: custom-ovpn-rw
               mountPath: /etc/openvpn/custom/
+            - name: media-nfs
+              mountPath: "/mnt/media"
 #          volumeMounts:
 #            - mountPath: /data
 #              name: data
@@ -63,6 +65,8 @@ spec:
               value: "54871"
             - name: "TRANSMISSION_PEER_RANDOM_ON_START"
               value: "false"
+            - name: "TRANSMISSION_DOWNLOAD_DIR"
+              value: "/mnt/media/downloads"
           securityContext:
             privileged: true
             capabilities:
@@ -74,6 +78,9 @@ spec:
             name: custom-ovpn
         - name: custom-ovpn-rw
           emptyDir: {}
+        - name: media-nfs
+          persistentVolumeClaim:
+            claimName: media-nfs-pvc
 #      volumes:
 #        - name: data
 #          persistentVolumeClaim:

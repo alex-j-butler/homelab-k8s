@@ -27,6 +27,8 @@ spec:
           value: "44" # Video group
         - name: UMASK
           value: "002"
+        - name: TZ
+          value: "Australia/Brisbane"
         volumeMounts:
         - mountPath: "/config"
           name: sonarr-config

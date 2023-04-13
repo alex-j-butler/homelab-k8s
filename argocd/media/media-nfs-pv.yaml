@@ -11,6 +11,9 @@ spec:
     - ReadWriteOnce
     - ReadOnlyMany
     - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
   storageClassName: ""
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Retain

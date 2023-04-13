@@ -16,17 +16,6 @@ spec:
     resources:
       requests:
         storage: 2Gi
-  backupProfiles:
-  - name: daily
-    dumpInstance:
-      storage:
-        persistentVolumeClaim:
-          claimName: sql-backup-pvc
-  backupSchedules:
-  - name: daily-sql-schedule
-    schedule: "0 0 * * *" # Daily, at midnight
-    backupProfileName: daily # reference the desired backupProfiles's name 
-    enabled: true # backup schedules can be temporarily disabled
   mycnf: |
     [mysqld]
     default_authentication_plugin=mysql_native_password
@@ -39,18 +28,3 @@ spec:
         labelSelector:
           matchLabels:
             mysql.oracle.com/cluster: mysqlcluster
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  namespace: mysql-cluster
-  name: sql-backup-pvc
-  annotations:
-    k8up.io/backup: "false"
-spec:
-  storageClassName: "storage-synology-iscsi"
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi

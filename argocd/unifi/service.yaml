@@ -6,6 +6,8 @@ metadata:
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.1.200.26
+  selector:
+    app: unifi
   ports:
     - name: device-comm
       port: 8080

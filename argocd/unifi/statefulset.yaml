@@ -3,9 +3,13 @@ kind: StatefulSet
 metadata:
   namespace: unifi
   name: unifi-controller
+  labels:
+    app: unifi
 spec:
-  serviceName: unifi-controller
   replicas: 1
+  selector:
+    matchLabels:
+      app: unifi
   template:
     metadata:
       labels:

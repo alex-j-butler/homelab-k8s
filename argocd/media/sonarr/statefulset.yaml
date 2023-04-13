@@ -24,7 +24,9 @@ spec:
         - name: PUID
           value: "1000"
         - name: PGID
-          value: "1000"
+          value: "44" # Video group
+        - name: UMASK
+          value: "002"
         volumeMounts:
         - mountPath: "/config"
           name: sonarr-config

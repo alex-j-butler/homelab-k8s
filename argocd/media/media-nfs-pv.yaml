@@ -20,6 +20,6 @@ spec:
     namespace: media
     name: media-nfs-pvc
   nfs:
-    server: 10.0.3.64
+    server: 10.1.200.230
     path: /volume1/Media
     readOnly: no

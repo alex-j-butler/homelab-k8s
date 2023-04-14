@@ -1,0 +1,37 @@
+apiVersion: k8up.io/v1
+kind: Schedule
+metadata:
+  namespace: unifi
+  name: unifi-backup-schedule
+spec:
+  podSecurityContext:
+    runAsUser: 0
+  backend:
+    repoPasswordSecretRef:
+      name: backup-repo
+      key: password
+    s3:
+      endpoint: https://s3.ap-southeast-2.amazonaws.com
+      bucket: alexjbutler-k8s-backup
+      accessKeyIDSecretRef:
+        name: backup-credentials
+        key: username
+      secretAccessKeySecretRef:
+        name: backup-credentials
+        key: password
+  backup:
+    tags:
+      - "unifi-backup"
+    schedule: '0 0 * * *'
+    failedJobsHistoryLimit: 2
+    successfulJobsHistoryLimit: 2
+  check:
+    schedule: '45 2 * * *'
+  prune:
+    schedule: '15 2 * * *'
+    retention:
+      keepLast: 14
+      keepDaily: 14
+      keepWeekly: 12
+      keepMonthly: 12
+      keepYearly: 7

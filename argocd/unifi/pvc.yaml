@@ -3,6 +3,23 @@ kind: PersistentVolumeClaim
 metadata:
   namespace: unifi
   name: unifi-pvc
+  annotations:
+    k8up.io/backup: 'false'
+spec:
+  storageClassName: "storage-synology-iscsi"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: unifi
+  name: backup-pvc
+  annotations:
+    k8up.io/backup: 'true'
 spec:
   storageClassName: "storage-synology-iscsi"
   accessModes:

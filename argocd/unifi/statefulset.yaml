@@ -54,7 +54,12 @@ spec:
         volumeMounts:
           - name: unifi-data
             mountPath: /config
+          - name: unifi-backups
+            mountPath: /usr/lib/unifi/data/backup/autobackup
       volumes:
         - name: unifi-data
           persistentVolumeClaim:
             claimName: unifi-pvc
+        - name: unifi-backups
+          persistentVolumeClaim:
+            claimName: backup-pvc

@@ -7,4 +7,4 @@ resources:
 configMapGenerator:
 - name: dns-configmap
   files:
-  - argocd/dns/named.conf
+  - named.conf

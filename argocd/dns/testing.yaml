@@ -10,10 +10,6 @@ spec:
   selector:
     app: bind9
   ports:
-  - protocol: TCP
-    port: 53
-    targetPort: 53
-    name: bind9-tcp
   - protocol: UDP
     port: 53
     targetPort: 53
@@ -39,9 +35,6 @@ spec:
         env:
         ports:
         - containerPort: 53
-          protocol: TCP
-        - containerPort: 53
-          protocol: UDP
         volumeMounts:
         - name: dns-configmap
           mountPath: /etc/bind/named.conf

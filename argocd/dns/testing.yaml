@@ -42,3 +42,11 @@ spec:
           protocol: TCP
         - containerPort: 53
           protocol: UDP
+        volumeMounts:
+        - name: dns-configmap
+          mountPath: /etc/bind/named.conf
+          subPath: named.conf
+      volumes:
+      - name: dns-configmap
+        configMap:
+          name: dns-configmap

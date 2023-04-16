@@ -18,6 +18,8 @@ spec:
       labels:
         app: 3cx-sbc-testing
     spec:
+      nodeSelector:
+        alex-j-butler.com/nonlocalbind: true
       securityContext:
         sysctls:
         - name: ip_nonlocal_bind

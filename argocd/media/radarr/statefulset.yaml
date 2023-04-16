@@ -34,6 +34,10 @@ spec:
           name: radarr-config
         - mountPath: "/mnt/media"
           name: media-nfs
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
       volumes:
         - name: radarr-config
           persistentVolumeClaim:

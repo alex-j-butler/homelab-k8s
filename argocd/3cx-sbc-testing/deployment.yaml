@@ -18,12 +18,21 @@ spec:
       labels:
         app: 3cx-sbc-testing
     spec:
+      volumes:
+      - name: conf
+        configMap:
+          name: 3cx-sbc-conf
       containers:
         - name: app
           image: ghcr.io/apyos/docker-3cx-sbc:18.1.36
           ports:
             - containerPort: 5060
             - containerPort: 5061
+          volumeMounts:
+          - name: conf
+            mountPath: "/etc/3cxsbc.conf.local"
+            subPath: "3cxsbc.conf"
+            readOnly: true
           env:
             - name: PBX_URL
               valueFrom:

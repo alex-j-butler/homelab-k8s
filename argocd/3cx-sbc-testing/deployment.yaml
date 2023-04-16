@@ -40,7 +40,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: 3cx-sbc-testing
-  name: 3cx-sbc-svc
+  name: sbc-svc
 spec:
   type: LoadBalancer
   selector:

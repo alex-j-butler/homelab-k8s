@@ -20,7 +20,14 @@ spec:
     [mysqld]
     default_authentication_plugin=mysql_native_password
     max_allowed_packet=128M
+    innodb_buffer_pool_size=1G
   podSpec:
+    containers:
+      - name: mysql
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname

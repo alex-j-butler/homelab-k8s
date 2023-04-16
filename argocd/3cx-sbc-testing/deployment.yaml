@@ -18,6 +18,10 @@ spec:
       labels:
         app: 3cx-sbc-testing
     spec:
+      securityContext:
+        sysctls:
+        - name: ip_nonlocal_bind
+          value: 1
       volumes:
       - name: conf
         configMap:

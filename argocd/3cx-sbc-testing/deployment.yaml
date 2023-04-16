@@ -35,3 +35,20 @@ spec:
                 secretKeyRef:
                   name: 3cx-sbc-details
                   key: key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: 3cx-sbc-testing
+  name: 3cx-sbc-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: 3cx-sbc-testing
+  ports:
+    - name: sip-udp
+      port: 5060
+      protocol: UDP
+    - name: sip-tcp
+      port: 5060
+      protocol: TCP

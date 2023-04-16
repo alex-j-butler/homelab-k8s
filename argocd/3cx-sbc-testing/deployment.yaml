@@ -22,7 +22,7 @@ spec:
         alex-j-butler.com/nonlocalbind: true
       securityContext:
         sysctls:
-        - name: ip_nonlocal_bind
+        - name: net.ipv4.ip_nonlocal_bind
           value: "1"
       volumes:
       - name: conf

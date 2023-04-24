@@ -56,9 +56,10 @@ democratic-csi:
         serialize: true
 
       iscsi:
+        # targetPortal: "127.0.0.1"
         # for multipath
         # targetPortals: [] # [ "server[:port]", "server[:port]", ... ]
-        targetPortals: ["127.0.0.1"]
+        # targetPortals: ["127.0.0.1"]
         # leave empty to omit usage of -I with iscsiadm
         interface: ""
         # can be whatever you would like

@@ -23,18 +23,8 @@ democratic-csi:
       node-publish-secret:
       controller-expand-secret:
 
-  volumeSnapshotClasses:
-  - name: snapshot-synology-iscsi
-    parameters:
-    secrets:
-      snapshotter-secret:
-
-
   controller:
     externalResizer:
-      enabled: true
-
-    externalSnapshotter:
       enabled: true
 
   driver:

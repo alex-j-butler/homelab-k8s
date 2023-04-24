@@ -1,0 +1,71 @@
+## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+##
+grafana:
+  enabled: true
+
+  ## Timezone for the default dashboards
+  ## Other options are: browser or a specific timezone, i.e. Europe/Luxembourg
+  ##
+  defaultDashboardsTimezone: browser
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    hosts: ['grafana.int.alex-j-butler.com']
+    path: /
+    tls:
+    - secretName: grafana-general-tls
+      hosts:
+      - grafana.int.alex-j-butler.com
+
+prometheus:
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    hosts: ['prom.int.alex-j-butler.com']
+    paths: ['/']
+    tls:
+    - secretName: prom-tls
+      hosts:
+      - prom.int.alex-j-butler.com
+  
+  prometheusSpec:
+    externalUrl: "https://prom.int.alex-j-butler.com/"
+    routePrefix: /
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: storage-synology-iscsi
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
+
+alertmanager:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    hosts: ['alert.int.alex-j-butler.com']
+    paths: ['/']
+    tls:
+    - secretName: alertmanager-tls
+      hosts:
+      - alert.int.alex-j-butler.com
+  alertmanagerSpec:
+    externalUrl: https://alert.int.alex-j-butler.com/
+    routePrefix: /
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: storage-synology-iscsi
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi

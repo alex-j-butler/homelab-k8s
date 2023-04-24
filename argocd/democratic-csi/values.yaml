@@ -56,7 +56,7 @@ driver:
     iscsi:
       # for multipath
       # targetPortals: [] # [ "server[:port]", "server[:port]", ... ]
-      targetPortals: []
+      targetPortals: ["127.0.0.1"]
       # leave empty to omit usage of -I with iscsiadm
       interface: ""
       # can be whatever you would like

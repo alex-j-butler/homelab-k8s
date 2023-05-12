@@ -10,7 +10,7 @@ spec:
   router:
     instances: 2
   datadirVolumeClaimTemplate:
-    storageClassName: "storage-synology-iscsi"
+    storageClassName: "directpv-min-io"
     accessModes: 
       - ReadWriteOnce
     resources:

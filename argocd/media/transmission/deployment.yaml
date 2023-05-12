@@ -60,7 +60,7 @@ spec:
                   name: openvpn
                   key: password
             - name: "LOCAL_NETWORK"
-              value: "10.244.0.0/16"
+              value: "192.168.0.0/16"
             - name: "TRANSMISSION_PEER_PORT"
               value: "54871"
             - name: "TRANSMISSION_PEER_RANDOM_ON_START"

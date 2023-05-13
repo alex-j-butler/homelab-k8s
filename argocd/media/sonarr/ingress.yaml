@@ -10,10 +10,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - sonarr.int.alex-j-butler.com
-    secretName: sonarr-int-tls
+    - sonarr.alex-j-butler.com
+    secretName: sonarr-tls
   rules:
-  - host: sonarr.int.alex-j-butler.com
+  - host: sonarr.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

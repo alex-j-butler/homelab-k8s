@@ -36,20 +36,6 @@ spec:
         volumeMounts:
         - mountPath: "/config"
           name: bookstack-temp
-      - name: init-bookstack-ca
-        image: debian:stable-slim
-        command: ["/bin/sh", "-c"]
-        # args: ["apk --no-cache add ca-certificates && update-ca-certificates && cp -r /etc/ssl/certs/* /artifact/"]
-        args: ["apt update && apt install -y --no-install-recommends ca-certificates && update-ca-certificates && cp -r /etc/ssl/certs/* /artifact/"]
-        # args: ["tail -f /dev/null"]
-        volumeMounts:
-        - name: tmp
-          mountPath: /artifact
-          readOnly: false
-        - name: ca-pemstore
-          mountPath: /usr/local/share/ca-certificates/ca-customcert.crt
-          subPath: minio-ca.crt
-          readOnly: false
       containers:
       - name: bookstack
         #image: linuxserver/bookstack
@@ -108,9 +94,6 @@ spec:
         volumeMounts:
         - mountPath: "/config"
           name: bookstack-temp
-        - name: tmp
-          mountPath: /etc/ssl/certs
-          readOnly: false
         - mountPath: "/app/www/storage/uploads/images"
           name: images
         - mountPath: "/app/www/storage/uploads/files"
@@ -133,11 +116,6 @@ spec:
         - name: bookstack-temp
           emptyDir:
             sizeLimit: 500Mi
-        - name: tmp
-          emptyDir: {}
-        - name: ca-pemstore
-          configMap:
-            name: ca-pemstore
         - name: images
           persistentVolumeClaim:
             claimName: uploads-nfs-pvc

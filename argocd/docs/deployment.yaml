@@ -22,7 +22,7 @@ spec:
           matchLabels:
             app: bookstack
       imagePullSecrets:
-        - name: githubregcreds
+        - name: dockerconfigjson-github-com
       initContainers:
       - name: init-bookstack-volume
         image: busybox:1.36

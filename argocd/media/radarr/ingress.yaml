@@ -10,10 +10,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - radarr.int.alex-j-butler.com
+    - radarr.alex-j-butler.com
     secretName: radarr-int-tls
   rules:
-  - host: radarr.int.alex-j-butler.com
+  - host: radarr.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

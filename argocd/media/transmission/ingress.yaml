@@ -10,10 +10,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - transmission.int.alex-j-butler.com
+    - transmission.alex-j-butler.com
     secretName: transmission-int-tls
   rules:
-  - host: transmission.int.alex-j-butler.com
+  - host: transmission.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

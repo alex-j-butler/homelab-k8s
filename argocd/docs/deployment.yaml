@@ -101,42 +101,24 @@ spec:
 
         ### S3 Storage configuration
         - name: STORAGE_TYPE
-          value: "s3"
-        - name: STORAGE_S3_KEY
-          valueFrom:
-            secretKeyRef:
-              name: bookstack-s3
-              key: S3_KEY
-        - name: STORAGE_S3_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: bookstack-s3
-              key: S3_SECRET
-        - name: STORAGE_S3_BUCKET
-          valueFrom:
-            secretKeyRef:
-              name: bookstack-s3
-              key: S3_BUCKET
-        - name: STORAGE_S3_ENDPOINT
-          valueFrom:
-            secretKeyRef:
-              name: bookstack-s3
-              key: S3_ENDPOINT
-        - name: STORAGE_URL
-          value: "https://img.int.alex-j-butler.com/bookstack"
+          value: "local"
         volumeMounts:
         - mountPath: "/config"
           name: bookstack-temp
         - name: tmp
           mountPath: /etc/ssl/certs
           readOnly: false
-        # readinessProbe:
-        #  httpGet:
-        #    path: /login
-        #    port: 80
-        #  initialDelaySeconds: 5
-        #  timeoutSeconds: 1
-        #  periodSeconds: 15
+        - mountPath: "/app/www/storage/uploads/images"
+          name: images
+        - mountPath: "/app/www/storage/uploads/files"
+          name: attachments
+        readinessProbe:
+         httpGet:
+           path: /status
+           port: 80
+         initialDelaySeconds: 5
+         timeoutSeconds: 1
+         periodSeconds: 15
         # livenessProbe:
         #  httpGet:
         #    path: /login
@@ -153,3 +135,9 @@ spec:
         - name: ca-pemstore
           configMap:
             name: ca-pemstore
+        - name: images
+          persistentVolumeClaim:
+            claimName: uploads-nfs-pvc
+        - name: attachments
+          persistentVolumeClaim:
+            claimName: attachments-nfs-pvc

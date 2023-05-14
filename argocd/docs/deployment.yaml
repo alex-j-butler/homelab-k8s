@@ -70,7 +70,7 @@ spec:
 
         ### Application configuration
         - name: APP_URL
-          value: "https://docs.int.alex-j-butler.com"
+          value: "https://docs-test.int.alex-j-butler.com"
         - name: APP_DEBUG
           value: "true"
         - name: FILE_UPLOAD_SIZE_LIMIT

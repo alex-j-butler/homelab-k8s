@@ -94,7 +94,7 @@ spec:
         volumeMounts:
         - mountPath: "/config"
           name: bookstack-temp
-        - mountPath: "/app/www/storage/uploads/images"
+        - mountPath: "/app/www/public/uploads/images"
           name: images
         - mountPath: "/app/www/storage/uploads/files"
           name: attachments

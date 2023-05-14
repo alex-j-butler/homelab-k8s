@@ -95,9 +95,9 @@ spec:
         - name: SESSION_DRIVER
           value: "redis"
         - name: REDIS_SERVERS
-          value: "rfs-redisfailover.default.svc.cluster.local:6379:0"
+          value: "rfs-redisfailover.redis-failover.svc.cluster.local:6379:0"
         - name: REDIS_SERVER
-          value: "tcp://rfs-redisfailover.default.svc.cluster.local:26379?timeout=0.100"
+          value: "tcp://rfs-redisfailover.redis-failover.svc.cluster.local:26379?timeout=0.100"
 
         ### S3 Storage configuration
         - name: STORAGE_TYPE

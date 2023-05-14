@@ -39,7 +39,7 @@ spec:
       containers:
       - name: bookstack
         #image: linuxserver/bookstack
-        image: ghcr.io/alex-j-butler/docker-bookstack/bookstack:v23.02.2
+        image: ghcr.io/alex-j-butler/docker-bookstack/bookstack:v23.05.1
         ports:
         - containerPort: 80
         env:

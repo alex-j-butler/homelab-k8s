@@ -1,4 +1,4 @@
 namespace: redis-operator
 
 resources:
-  - github.com/spotahome/redis-operator/manifests/kustomize/overlays/full
+  - github.com/spotahome/redis-operator/manifests/kustomize/overlays/default

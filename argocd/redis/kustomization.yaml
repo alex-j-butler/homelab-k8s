@@ -1,3 +1,5 @@
+namespace: redis-failover
+
 resources:
 - operator
 - cluster.yaml

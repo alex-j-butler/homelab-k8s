@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: up-tagger
+  namespace: up-tagger
+  labels:
+    app: up-tagger
+spec:
+  selector:
+    matchLabels:
+      app: up-tagger
+  template:
+    metadata:
+      labels:
+        app: up-tagger
+    spec:
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
+      imagePullPolicy: always
+      containers:
+      - name: up-tagger
+        image: ghcr.io/alex-j-butler/up-tagger:latest
+        ports:
+        - containerPort: 8000
+        env:
+        readinessProbe:
+         httpGet:
+           path: /status
+           port: 80
+         initialDelaySeconds: 5
+         timeoutSeconds: 1
+         periodSeconds: 15

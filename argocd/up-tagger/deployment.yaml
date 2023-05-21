@@ -23,6 +23,13 @@ spec:
         ports:
         - containerPort: 8000
         env:
+        - name: BASE_URL
+          value: "https://uptagger.alex-j-butler.com"
+        - name: UP_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: up-secrets
+              key: up-token
         # readinessProbe:
         #  httpGet:
         #    path: /status

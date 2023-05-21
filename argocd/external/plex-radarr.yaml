@@ -19,7 +19,7 @@ metadata:
   name: radarr-external-service
 subsets:
 - addresses:
-  - ip: 10.0.3.23
+  - ip: 10.1.200.5
   ports:
   - name: radarr-external-app
     port: 7878

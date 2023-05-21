@@ -19,7 +19,7 @@ metadata:
   name: plex-external-service
 subsets:
 - addresses:
-  - ip: 10.0.3.23
+  - ip: 10.1.200.5
   ports:
   - name: plex-external-app
     port: 32400

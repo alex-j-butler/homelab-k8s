@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: up-tagger-svc
+  namespace: up-tagger
+  labels:
+    app: up-tagger
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+  selector:
+    app: up-tagger

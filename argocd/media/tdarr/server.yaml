@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tdarr
+  namespace: media
+  labels:
+    app: tdarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tdarr
+  template:
+    metadata:
+      labels:
+        app: tdarr
+    spec:
+      containers:
+      - name: tdarr
+        image: ghcr.io/haveagitgat/tdarr:latest
+        ports:
+        - containerPort: 8989 # WebUI
+        - containerPort: 8266 # Server port
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "44" # Video group
+        - name: UMASK
+          value: "002"
+        - name: TZ
+          value: "Australia/Brisbane"
+        - name: serverPort
+          value: 8266
+        - name: webUIPort
+          value: 8265
+        - name: internalNode
+          value: false
+        - name: inContainer
+          value: true
+        - name: nodeName
+          value: "main"
+        volumeMounts:
+        - mountPath: "/app/server"
+          name: tdarr-server
+        - mountPath: "/app/configs"
+          name: tdarr-config
+        - mountPath: "/media"
+          name: media-nfs
+      volumes:
+        - name: tdarr-config
+          persistentVolumeClaim:
+            claimName: tdarr-config-pvc
+        - name: tdarr-server
+          persistentVolumeClaim:
+            claimName: tdarr-server-pvc
+        - name: media-nfs
+          persistentVolumeClaim:
+            claimName: media-nfs-pvc

@@ -7,13 +7,13 @@ metadata:
     nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  ingressClassName: nginx
+  ingressClassName: internal-nginx
   tls:
   - hosts:
-    - sonarr.alex-j-butler.com
-    secretName: sonarr-tls
+    - sonarr.int.alex-j-butler.com
+    secretName: sonarr-int-tls
   rules:
-  - host: sonarr.alex-j-butler.com
+  - host: sonarr.int.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

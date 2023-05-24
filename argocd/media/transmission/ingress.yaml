@@ -7,13 +7,13 @@ metadata:
     nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  ingressClassName: nginx
+  ingressClassName: internal-nginx
   tls:
   - hosts:
-    - transmission.alex-j-butler.com
+    - transmission.int.alex-j-butler.com
     secretName: transmission-int-tls
   rules:
-  - host: transmission.alex-j-butler.com
+  - host: transmission.int.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

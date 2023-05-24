@@ -7,13 +7,13 @@ metadata:
     nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  ingressClassName: nginx
+  ingressClassName: internal-nginx
   tls:
   - hosts:
-    - radarr.alex-j-butler.com
+    - radarr.int.alex-j-butler.com
     secretName: radarr-int-tls
   rules:
-  - host: radarr.alex-j-butler.com
+  - host: radarr.int.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

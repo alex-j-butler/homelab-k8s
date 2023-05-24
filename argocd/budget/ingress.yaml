@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: budget
+  name: budget-ingress
+  annotations:
+    nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: internal-nginx
+  tls:
+  - hosts:
+    - budget.int.alex-j-butler.com
+    secretName: budget-tls
+  rules:
+  - host: budget.int.alex-j-butler.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: budget-svc
+            port:
+              number: 8080

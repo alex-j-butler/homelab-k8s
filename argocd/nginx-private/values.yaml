@@ -6,3 +6,4 @@ ingress-nginx:
       enabled: true
       default: false
       controllerValue: "k8s.io/internal-ingress-nginx"  # default: k8s.io/ingress-nginx
+    replicaCount: 4

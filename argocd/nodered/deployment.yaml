@@ -4,14 +4,17 @@ metadata:
   name: nodered
   namespace: nodered
   labels:
-    name: nodered
+    app: nodered
 spec:
+  selector:
+    matchLabels:
+      app: nodered
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        name: nodered
+        app: nodered
     spec:
       containers:
       - image: nodered/node-red:latest

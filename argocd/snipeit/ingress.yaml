@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: snipeit
+  name: snipeit-ingress
+  annotations:
+    nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: internal-nginx
+  tls:
+  - hosts:
+    - snipeit.int.alex-j-butler.com
+    secretName: snipeit-int-tls
+  rules:
+  - host: snipeit.int.alex-j-butler.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: snipeit-svc
+            port:
+              number: 80

@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snipeit
+  namespace: snipeit
+  labels:
+    app: snipeit
+spec:
+  selector:
+    matchLabels:
+      app: snipeit
+  template:
+    metadata:
+      labels:
+        app: snipeit
+    spec:
+      containers:
+      - name: snipeit
+        image: snipe/snipe-it:6.1.0
+        ports:
+        - containerPort: 80
+        env:
+        - name: APP_ENV
+          value: "production"
+        - name: APP_DEBUG
+          value: "false"
+        - name: APP_KEY
+          valueFrom:
+            secretKeyRef:
+              name: snipe-it-app-key
+              key: app-key
+        - name: APP_URL
+          value: "https://snipeit.int.alex-j-butler.com"
+        - name: APP_TIMEZONE
+          value: "Australia/Brisbane"
+        - name: APP_LOCALE
+          value: "en"
+
+        - name: PHP_UPLOAD_LIMIT
+          value: "100"
+        
+        ### Database configuration
+        - name: MYSQL_PORT_3306_TCP_ADDR
+          value: "mysqlcluster.mysql-cluster.svc.cluster.local"
+        - name: MYSQL_PORT_3306_TCP_PORT
+          value: "3306"
+        # Database user
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: bookstack-db-user-pass
+              key: username
+        # Database password
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bookstack-db-user-pass
+              key: password
+        # Database db name
+        - name: MYSQL_DATABASE
+          value: "snipe_it"

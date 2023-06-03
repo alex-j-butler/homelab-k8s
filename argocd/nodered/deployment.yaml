@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodered
+  namespace: nodered
+  labels:
+    name: nodered
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: nodered
+    spec:
+      containers:
+      - image: nodered/node-red:latest
+        name: nodered
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "200M"
+        env:
+        - name: TZ
+          value: "Australia/Brisbane"    
+        ports:
+        - containerPort: 1880
+        volumeMounts:
+        - mountPath: /data
+          name: nodered-data
+      volumes:
+        - name: nodered-data
+          persistentVolumeClaim:
+            claimName: nodered-pvc
+      restartPolicy: Always
+      imagePullPolicy: IfNotPresent

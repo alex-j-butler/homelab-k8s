@@ -16,6 +16,17 @@ spec:
       labels:
         app: nodered
     spec:
+      initContainers:
+      - name: take-data-dir-ownership
+        image: busybox:1.32
+        command:
+        - chown
+        - -R
+        - 1000:1000
+        - /data
+        volumeMounts:
+        - name: nodered-data
+          mountPath: /data
       containers:
       - image: nodered/node-red:latest
         name: nodered
@@ -36,4 +47,3 @@ spec:
           persistentVolumeClaim:
             claimName: nodered-pvc
       restartPolicy: Always
-      imagePullPolicy: IfNotPresent

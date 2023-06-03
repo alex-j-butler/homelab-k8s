@@ -18,6 +18,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: nodered
+            name: nodered-svc
             port:
               number: 1880

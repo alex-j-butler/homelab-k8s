@@ -48,13 +48,13 @@ spec:
         - name: MYSQL_USER
           valueFrom:
             secretKeyRef:
-              name: bookstack-db-user-pass
+              name: snipe-it-app-key
               key: username
         # Database password
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: bookstack-db-user-pass
+              name: snipe-it-app-key
               key: password
         # Database db name
         - name: MYSQL_DATABASE

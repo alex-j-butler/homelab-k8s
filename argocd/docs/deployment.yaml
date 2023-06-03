@@ -88,9 +88,11 @@ spec:
         volumeMounts:
         - mountPath: "/config"
           name: bookstack-temp
-        - mountPath: "/app/www/public/uploads/images"
+        - mountPath: "/config/www/images"
           name: images
-        - mountPath: "/app/www/storage/uploads/files"
+        - mountPath: "/config/www/files"
+          name: files
+        - mountPath: "/config/www/uploads"
           name: attachments
         #readinessProbe:
         # httpGet:
@@ -113,6 +115,9 @@ spec:
         - name: images
           persistentVolumeClaim:
             claimName: uploads-nfs-pvc
+        - name: files
+          persistentVolumeClaim:
+            claimName: fileuploads-nfs-pvc
         - name: attachments
           persistentVolumeClaim:
             claimName: attachments-nfs-pvc

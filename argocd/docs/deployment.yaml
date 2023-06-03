@@ -38,8 +38,7 @@ spec:
           name: bookstack-temp
       containers:
       - name: bookstack
-        #image: linuxserver/bookstack
-        image: ghcr.io/alex-j-butler/docker-bookstack/bookstack:v23.05.1
+        image: linuxserver/bookstack:v22.10.1
         ports:
         - containerPort: 80
         env:
@@ -51,7 +50,6 @@ spec:
         ### Database configuration
         - name: DB_HOST
           value: "mysqlcluster.mysql-cluster.svc.cluster.local"
-          #value: "10.102.92.84"
         # Database user
         - name: DB_USER
           valueFrom:
@@ -80,13 +78,9 @@ spec:
 
         ### Session and Cache driver
         - name: CACHE_DRIVER
-          value: "redis"
+          value: "database"
         - name: SESSION_DRIVER
-          value: "redis"
-        - name: REDIS_SERVERS
-          value: "rfs-redisfailover.redis-failover.svc.cluster.local:6379:0"
-        - name: REDIS_SERVER
-          value: "tcp://rfs-redisfailover.redis-failover.svc.cluster.local:26379?timeout=0.100"
+          value: "database"
 
         ### S3 Storage configuration
         - name: STORAGE_TYPE

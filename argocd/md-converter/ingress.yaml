@@ -22,3 +22,10 @@ spec:
             name: web-svc
             port:
               number: 8000
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: frontend-svc
+            port:
+              number: 3000

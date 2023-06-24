@@ -7,7 +7,6 @@ metadata:
     # custom max body size for file uploading like backing image uploading
     nginx.ingress.kubernetes.io/proxy-body-size: 10000m
     nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: internal-nginx
@@ -16,9 +15,9 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/api(/|$)(.*)"
+        path: "/"
         backend:
           service:
-            name: web-svc
+            name: frontend-svc
             port:
-              number: 8000
+              number: 3000

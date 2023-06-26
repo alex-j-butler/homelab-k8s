@@ -12,9 +12,6 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - docs.alex-j-butler.com
-    secretName: docs-external-tls
-  - hosts:
     - pwd.alex-j-butler.com
     secretName: pwd-external-tls
   - hosts:
@@ -24,16 +21,6 @@ spec:
     - plex.alex-j-butler.com
     secretName: plex-external-tls
   rules:
-  - host: docs.alex-j-butler.com
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: docs-external-service
-            port:
-              number: 80
   - host: pwd.alex-j-butler.com
     http:
       paths:

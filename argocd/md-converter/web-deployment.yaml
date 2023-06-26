@@ -18,6 +18,11 @@ spec:
         - name: dockerconfigjson-github-com
       containers:
       - name: web
-        image: ghcr.io/alex-j-butler/markdown-converter-api/web:1.0.0
+        image: ghcr.io/alex-j-butler/markdown-converter-api/web:1.0.3
         ports:
         - containerPort: 8000
+        env:
+        - name: MDCONVERTER_BROKER_URL
+          value: "amqp://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"
+        - name: MDCONVERTER_RESULT_BACKEND_URL
+          value: "celery_amqp_backend.AMQPBackend://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"

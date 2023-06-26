@@ -10,8 +10,12 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - docs.alex-j-butler.com
+    secretName: docs-tls
   rules:
-  - host: docs-test.int.alex-j-butler.com
+  - host: docs.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

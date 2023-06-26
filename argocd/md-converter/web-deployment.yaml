@@ -22,7 +22,7 @@ spec:
         ports:
         - containerPort: 8000
         env:
-        - name: MDCONVERTER_BROKER_URL
+        - name: FLASK_BROKER_URL
           value: "amqp://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"
-        - name: MDCONVERTER_RESULT_BACKEND_URL
+        - name: FLASK_RESULT_BACKEND_URL
           value: "celery_amqp_backend.AMQPBackend://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"

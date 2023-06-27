@@ -28,6 +28,8 @@ spec:
           value: "ap-southeast-2"
         - name: FLASK_S3_ENDPOINT_URL
           value: "https://s3.ap-southeast-2.amazonaws.com"
+        - name: FLASK_S3_BUCKET_NAME
+          value: "ajb-convert"
         - name: FLASK_S3_ACCESS_KEY
           valueFrom:
             secretKeyRef:

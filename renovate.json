@@ -11,5 +11,14 @@
       "matchPackageNames": ["linuxserver/bookstack"],
       "versioning": "regex:^(?<compatibility>.*)-v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$"
     }
+  ],
+  "hostRules": [
+    {
+      "matchHost": "https://ghcr.io/alex-j-butler",
+      "encrypted": {
+        "username": "wcFMA/xDdHCJBTolAQ//VoHspNiCa8qXJmatvqbCPEvbTUuWvyIACscOg5JgHmRae9z5NhVvwX+/1VkeGQ/mdciRIdkmSPpMOc5sO63cWR9NNux+e8eVGxSDm0N8UJyRp0EckLV0KOeK9gXPibmtLZSuZKuiiai33rbaj95M79fg5+u04bG4j48gdxzgohQU0VU568StEmec5IatKz/SpQEa09SfJdQ5oxwY0evhYDP6cqdvPsr92+PAB8/uMUuTw7UobE7pnWGDSnjFGPp2YcKM6npETpr7j5XnZeAZg33PJ2iNhcYs6rhCPpkEnMZE07UARfon42dg3HwnY39IGIc18oqFsI0yga2UvyAgUIoriN004OpgSBGq1U1TwtGIsJWS49WA1fL81kolb+n0GyjLo6AUkodrZnPnCGFqWmp6USKFklXMxj0cMw6/TtOJtXmgaAE0XJp8CsaDSjjPhfurJaC/xMQeSIVlBjECNwHQ6Q0Dkt7BN6RpyJH1x1mLsPgBgzscvrUj89QhSIh7X0ydtSvpjO+7KmjrmzYL2eXmmwifUC+puvrHgpiiIrA1tl/60iHQM1ffic4EZnozawtVbjMKtLsQZyzqE2SNHlVporLEH/jYtP6mX0IJGNjjgpXqAgIxjZFuGyORt+OY4WFzg+4ImGsZG1q6yoidRZLhKIWNz6TnEkLTPH7JngrSbAHs4lemYuhaW0hAbamsTgyqEMYL8OLdp12YlEtiSDhL9PYoX5TR9LDaYthpQTiCLu3+FZ68xwqo86QqCFOtppvuPyoszERvAnrdvqpprcZujtRa+xygvBwQKfuq33mwBwZJjWdPkUn9Tcko4Q",
+        "password": "wcFMA/xDdHCJBTolAQ/8D+5kDp55WrYVvOdaXBqG9kq7RCH5rIEI1vwLTNJvWv/VoijXyS8Gl25BXnrhMjTvrB2+Aor1mSNn/p9t1DdcWChkKCbTa/4qJLO8WqTOUkHwsgcR2fQSUpHAv3RXo8OUjhk0+UEy1SiYTnKYpPMsOUN/zFuIQxas6NGwD2Gnxavt8QAo9kAxpwXate5zx4bbcNu0RshSObQag0XFUBjgLgS/1tuHAe5GvQp5jvn0WWGkN+IuLXqaMt19yODC62nNjLbC3gu1hwtymPP2D/f1g+1U+ODKlg3XzLnCShb7Ydem9j6o8QJ8xdHXK6PT3SdwES6TSG2QKu6K3ciBrHT+FV9D+5A6cbOjJP/6K0LTHLkrj2vrBwIQOaXIKYzci3ZcidubGDeS9n8JrjFCd4pH9Xcrr9esk03eD0lb+zLWOy4RL22wdVuYFPLp3aranc9mxXC1SgMHlyY3LYdiCVmqT2YYiG9pGuz5oOXMitKTpk28uECdZ86YIpWI9TpeKsQSx36Tx0HEHugwEIhk3INF1qqddYAm+2WlT9Iy+F7ey9JtTuV5Vu9Dkexc6lsITMSaq1uONpNftTMmC9aN4aYC4IncUbmAZnVsrgWr1VlJheFoVlThC7C0O08RRD80OvcMqYndrQ+wC6M30cWIxRaKelh86GGHt9gTLIVlrHmITqnShwH7BpOstsfzO5drTeRpAiYtLqRcWiE1ZPnQKEFmHcxEBg3WzRlOL+pVLGBm58g5CVuk8G6e5jk3lFs5tMiGmieo6fXT03cniupW5ZIjNigOrGAiw+io6JhC5Jc1kHb8VDIqoBpApjpm38kz1f65O0j53EXgX9Og5UnMvqdPq7qDz3AMKENQ+w"
+      }
+    }
   ]
 }

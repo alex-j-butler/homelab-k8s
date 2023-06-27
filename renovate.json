@@ -14,7 +14,7 @@
   ],
   "hostRules": [
     {
-      "matchHost": "https://ghcr.io/alex-j-butler",
+      "matchHost": "https://ghcr.io/alex-j-butler/markdown-converter-api/web",
       "hostType": "docker",
       "username": "alex-j-butler",
       "encrypted": {

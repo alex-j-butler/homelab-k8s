@@ -69,8 +69,10 @@ spec:
         ### Application configuration
         - name: APP_URL
           value: "https://docs.alex-j-butler.com"
+        - name: APP_PROXIES
+          value: "*"
         - name: APP_DEBUG
-          value: "true"
+          value: "false"
         - name: FILE_UPLOAD_SIZE_LIMIT
           value: "100"
         - name: "SESSION_LIFETIME"

@@ -8,14 +8,14 @@ spec:
   tlsUseSelfSigned: true
   instances: 3
   router:
-    instances: 2
+    instances: 3
   datadirVolumeClaimTemplate:
     storageClassName: "directpv-min-io"
     accessModes: 
       - ReadWriteOnce
     resources:
       requests:
-        storage: 2Gi
+        storage: 10Gi
   mycnf: |
     [mysqld]
     default_authentication_plugin=mysql_native_password

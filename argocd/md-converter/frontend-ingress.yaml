@@ -1,7 +1,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: md-converter
   name: frontend-ingress
   annotations:
     # custom max body size for file uploading like backing image uploading

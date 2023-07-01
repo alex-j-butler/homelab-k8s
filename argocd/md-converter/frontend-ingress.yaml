@@ -11,7 +11,7 @@ spec:
   ingressClassName: internal-nginx
   tls:
   - hosts:
-    - convert.int.alex-j-butler.com
+    - convert-dev.int.alex-j-butler.com
     secretName: convert-int-tls
   rules:
   - host: convert-dev.int.alex-j-butler.com

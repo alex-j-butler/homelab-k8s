@@ -15,7 +15,7 @@ spec:
     - convert.int.alex-j-butler.com
     secretName: convert-int-tls
   rules:
-  - host: convert.int.alex-j-butler.com
+  - host: convert-dev.int.alex-j-butler.com
     http:
       paths:
       - pathType: Prefix

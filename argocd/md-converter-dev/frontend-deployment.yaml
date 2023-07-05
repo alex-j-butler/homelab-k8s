@@ -17,7 +17,7 @@ spec:
         - name: dockerconfigjson-github-com
       containers:
       - name: frontend
-        image: ghcr.io/alex-j-butler/markdown-converter-api/frontend:5e38171
+        image: ghcr.io/alex-j-butler/markdown-converter-api/frontend:e143232
         ports:
         - containerPort: 3000
         env:

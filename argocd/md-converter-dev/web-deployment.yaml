@@ -17,7 +17,7 @@ spec:
         - name: dockerconfigjson-github-com
       containers:
       - name: web
-        image: ghcr.io/alex-j-butler/markdown-converter-api/web:687bd84
+        image: ghcr.io/alex-j-butler/markdown-converter-api/web:851babc
         ports:
         - containerPort: 8000
         env:
@@ -25,6 +25,8 @@ spec:
           value: "amqp://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"
         - name: FLASK_RESULT_BACKEND_URL
           value: "celery_amqp_backend.AMQPBackend://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"
+        - name: FLASK_QUEUE_NAME
+          value: "dev"
         - name: FLASK_S3_REGION_NAME
           value: "ap-southeast-2"
         - name: FLASK_S3_ENDPOINT_URL
@@ -41,3 +43,13 @@ spec:
             secretKeyRef:
               name: s3-secrets
               key: secret-key
+        - name: FLASK_BOOKSTACK_URL
+          valueFrom:
+            secretKeyRef:
+              name: bookstack-secrets
+              key: bookstack_url
+        - name: FLASK_BOOKSTACK_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: bookstack-secrets
+              key: bookstack_token

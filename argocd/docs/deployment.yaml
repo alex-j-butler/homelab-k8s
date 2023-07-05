@@ -38,7 +38,7 @@ spec:
           name: bookstack-temp
       containers:
       - name: bookstack
-        image: linuxserver/bookstack:version-v23.06
+        image: linuxserver/bookstack:version-v23.06.1
         ports:
         - containerPort: 80
         env:

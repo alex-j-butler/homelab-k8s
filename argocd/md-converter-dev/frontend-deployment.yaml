@@ -17,6 +17,9 @@ spec:
         - name: dockerconfigjson-github-com
       containers:
       - name: frontend
-        image: ghcr.io/alex-j-butler/markdown-converter-api/frontend:a59adf5
+        image: ghcr.io/alex-j-butler/markdown-converter-api/frontend:5910eec
         ports:
         - containerPort: 3000
+        env:
+        - name: DOCKERENV_PUBLIC_API_URL
+          value: "https://convert-dev.int.alex-j-butler.com/api"

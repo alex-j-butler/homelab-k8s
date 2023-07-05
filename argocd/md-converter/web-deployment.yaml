@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
+      containers:
+      - name: web
+        image: ghcr.io/alex-j-butler/markdown-converter-api/web:1.0.9
+        ports:
+        - containerPort: 8000
+        env:
+        - name: FLASK_BROKER_URL
+          value: "amqp://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"
+        - name: FLASK_RESULT_BACKEND_URL
+          value: "celery_amqp_backend.AMQPBackend://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"
+        - name: FLASK_S3_REGION_NAME
+          value: "ap-southeast-2"
+        - name: FLASK_S3_ENDPOINT_URL
+          value: "https://s3.ap-southeast-2.amazonaws.com"
+        - name: FLASK_S3_BUCKET_NAME
+          value: "ajb-convert"
+        - name: FLASK_S3_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: s3-secrets
+              key: access-key
+        - name: FLASK_S3_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: s3-secrets
+              key: secret-key

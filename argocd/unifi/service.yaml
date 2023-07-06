@@ -5,7 +5,7 @@ metadata:
   name: unifi-svc
 spec:
   type: LoadBalancer
-  loadBalancerIP: 10.1.200.26
+  loadBalancerIP: 10.1.200.60
   selector:
     app: unifi
   ports:

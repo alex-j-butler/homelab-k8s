@@ -33,7 +33,7 @@ spec:
           value: "*"
         - name: memory_limit
           value: "500m"
-    - name: kimai-reverse-proxy
-      image: tobybatch/nginx-fpm-reverse-proxy:latest
-      ports:
-      - containerPort: 8001
+      - name: kimai-reverse-proxy
+        image: tobybatch/nginx-fpm-reverse-proxy:latest
+        ports:
+        - containerPort: 8001

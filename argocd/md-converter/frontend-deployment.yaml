@@ -20,3 +20,6 @@ spec:
         image: ghcr.io/alex-j-butler/markdown-converter-api/frontend:1.1.0
         ports:
         - containerPort: 3000
+        env:
+        - name: DOCKERENV_PUBLIC_API_URL
+          value: "https://convert.int.alex-j-butler.com/api"

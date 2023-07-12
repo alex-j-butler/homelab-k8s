@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kimai
+  labels:
+    app: kimai
+spec:
+  selector:
+    matchLabels:
+      app: kimai
+  template:
+    metadata:
+      labels:
+        app: kimai
+    spec:
+      containers:
+      - name: kimai
+        image: kimai/kimai2:fpm-dev
+        ports:
+        - containerPort: 80
+        env:
+        - name: ADMINMAIL
+          value: "alex@alex-j-butler.com"
+        - name: ADMINPASS
+          valueFrom:
+            secretKeyRef:
+              name: kimai-secrets
+              key: admin_password
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: kimai-secrets
+              key: database_url
+        - name: TRUSTED_HOSTS
+          value: "*"
+        - name: memory_limit
+          value: "500m"

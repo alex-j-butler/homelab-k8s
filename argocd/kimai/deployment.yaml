@@ -1,39 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kimai
+  name: tasksmd
   labels:
-    app: kimai
+    app: tasksmd
 spec:
   selector:
     matchLabels:
-      app: kimai
+      app: tasksmd
   template:
     metadata:
       labels:
-        app: kimai
+        app: tasksmd
     spec:
       containers:
-      - name: kimai-reverse-proxy
-        image: tobybatch/nginx-fpm-reverse-proxy:latest
+      - name: tasksmd
+        image: baldissaramatheus/tasks.md
         ports:
-        - containerPort: 8001
-      - name: kimai
-        image: kimai/kimai2:fpm-dev
+        - containerPort: 8080
         env:
-        - name: ADMINMAIL
-          value: "alex@alex-j-butler.com"
-        - name: ADMINPASS
-          valueFrom:
-            secretKeyRef:
-              name: kimai-secrets
-              key: admin_password
-        - name: DATABASE_URL
-          valueFrom:
-            secretKeyRef:
-              name: kimai-secrets
-              key: database_url
-        - name: TRUSTED_HOSTS
-          value: "*"
-        - name: memory_limit
-          value: "500m"
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"

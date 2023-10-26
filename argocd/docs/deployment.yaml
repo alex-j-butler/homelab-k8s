@@ -78,6 +78,22 @@ spec:
         - name: "SESSION_LIFETIME"
           value: "600"
 
+        ###
+        - name: "AUTH_METHOD"
+          value: "saml2"
+        - name: "SAML2_NAME"
+          value: "keycloak"
+        - name: "SAML2_EMAIL_ATTRIBUTE"
+          value: "urn:oid:1.2.840.113549.1.9.1"
+        - name: "SAML2_EXTERNAL_ID_ATTRIBUTE"
+          value: "sub"
+        - name: "SAML2_DISPLAY_NAME_ATTRIBUTES"
+          value: "urn:oid:2.5.4.42|urn:oid:2.5.4.4"
+        - name: "SAML2_IDP_ENTITYID"
+          value: "https://auth.alex-j-butler.com/auth/realms/master/protocol/saml/descriptor"
+        - name: "SAML2_AUTOLOAD_METADATA"
+          value: "true"
+
         ### Session and Cache driver
         - name: CACHE_DRIVER
           value: "database"

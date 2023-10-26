@@ -81,6 +81,8 @@ spec:
         ###
         - name: "AUTH_METHOD"
           value: "saml2"
+        - name: "AUTH_AUTO_INITIATE"
+          value: "false"
         - name: "SAML2_NAME"
           value: "keycloak"
         - name: "SAML2_EMAIL_ATTRIBUTE"

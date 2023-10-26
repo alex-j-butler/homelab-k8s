@@ -92,7 +92,7 @@ spec:
         - name: "SAML2_DISPLAY_NAME_ATTRIBUTES"
           value: "urn:oid:2.5.4.42|urn:oid:2.5.4.4"
         - name: "SAML2_IDP_ENTITYID"
-          value: "https://auth.alex-j-butler.com/auth/realms/master/protocol/saml/descriptor"
+          value: "https://auth.alex-j-butler.com/realms/master/protocol/saml/descriptor"
         - name: "SAML2_AUTOLOAD_METADATA"
           value: "true"
 

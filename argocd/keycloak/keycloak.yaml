@@ -1,0 +1,19 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: auth
+spec:
+  instances: 1
+  db:
+    vendor: mysql
+    host: "mysqlcluster.mysql-cluster.svc.cluster.local"
+    usernameSecret:
+      name: keycloak-secrets
+      key: db_username
+    passwordSecret:
+      name: keycloak-secrets
+      key: db_password
+  http:
+    tlsSecret: keycloak-tls
+  hostname:
+    hostname: auth.alex-j-butler.com

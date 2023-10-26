@@ -4,8 +4,11 @@ metadata:
   name: auth
 spec:
   instances: 1
+  additionalOptions:
+    - name: "db-url-database"
+      value: "jdbc:mysql://mysqlcluster.mysql-cluster.svc.cluster.local/keycloak"
   db:
-    vendor: mysql
+    driver: mysql
     host: "mysqlcluster.mysql-cluster.svc.cluster.local"
     usernameSecret:
       name: keycloak-secrets

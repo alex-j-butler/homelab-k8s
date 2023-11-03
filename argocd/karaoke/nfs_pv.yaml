@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: karaoke-media-nfs
-  name: media-nfs
+  name: karaoke-media-nfs
   labels:
     storage.k8s.io/name: karaoke-media-nfs
     storage.k8s.io/created-by: alex-j-butler

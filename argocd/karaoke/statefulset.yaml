@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: karaoke
+  name: karaoke
+  labels:
+    app: karaoke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: karaoke
+  template:
+    metadata:
+      labels:
+        app: karaoke
+    spec:
+      containers:
+      - name: karaoke-eternal
+        image: radrootllc/karaoke-eternal
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+          - name: karaoke-config
+            mountPath: /config
+          - name: karaoke-media
+            mountPath: /mnt/karaoke
+      volumes:
+        - name: karaoke-config
+          persistentVolumeClaim:
+            claimName: karaoke-config-pvc
+        - name: karaoke-media
+          persistentVolumeClaim:
+            claimName: karaoke-media-nfs-pvc

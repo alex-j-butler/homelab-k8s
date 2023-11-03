@@ -5,7 +5,7 @@ metadata:
   namespace: karaoke
 spec:
   selector:    
-    component: karaoke
+    app: karaoke
   type: ClusterIP
   ports:  
   - name: http

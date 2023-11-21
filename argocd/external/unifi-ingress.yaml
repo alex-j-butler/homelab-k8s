@@ -21,6 +21,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: unifi-external-service
+            name: unifi-console-external-service
             port:
               number: 8443

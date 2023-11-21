@@ -67,3 +67,28 @@ subsets:
   - name: unifi-disc-l2
     port: 1900
     protocol: UDP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: external
+  name: unifi-console-external-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: default-console
+      port: 8443
+      protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  namespace: external
+  name: unifi-console-external-service
+subsets:
+- addresses:
+  - ip: 10.0.3.7
+  ports:
+  - name: default-console
+    port: 8443
+    protocol: TCP

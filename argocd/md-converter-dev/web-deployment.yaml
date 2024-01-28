@@ -17,7 +17,7 @@ spec:
         - name: dockerconfigjson-github-com
       containers:
       - name: web
-        image: ghcr.io/alex-j-butler/markdown-converter-api/web:a73b5ae
+        image: ghcr.io/alex-j-butler/markdown-converter-api/web:e101388
         ports:
         - containerPort: 8000
         env:

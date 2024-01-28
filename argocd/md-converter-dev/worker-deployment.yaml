@@ -17,7 +17,7 @@ spec:
         - name: dockerconfigjson-github-com
       containers:
       - name: worker
-        image: ghcr.io/alex-j-butler/markdown-converter-api/worker:b2c7797
+        image: ghcr.io/alex-j-butler/markdown-converter-api/worker:a1ed3d3
         env:
         - name: FLASK_BROKER_URL
           value: "amqp://guest@rabbitmq-svc.rabbitmq.svc.cluster.local"

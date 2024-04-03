@@ -67,6 +67,8 @@ spec:
               value: "false"
             - name: "TRANSMISSION_DOWNLOAD_DIR"
               value: "/mnt/media/downloads"
+            - name: "TRANSMISSION_INCOMPLETE_DIR"
+              value: "/mnt/media/downloads_incomplete"
           securityContext:
             privileged: true
             capabilities:

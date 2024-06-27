@@ -24,5 +24,5 @@ appVersion: "4.4.3"
 
 dependencies:
 - name: k8up
-  version: v4.4.3
+  version: 4.7.0
   repository: https://k8up-io.github.io/k8up

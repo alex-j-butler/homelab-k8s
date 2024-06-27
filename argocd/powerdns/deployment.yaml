@@ -19,7 +19,7 @@ spec:
       - name: powerdns-admin
         image: pschiffe/pdns-admin
         ports:
-        - containerPort: 9494
+        - containerPort: 8080
         env:
         # Mysql settings
         - name: PDNS_ADMIN_SQLA_DB_HOST

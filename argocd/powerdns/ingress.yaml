@@ -6,7 +6,6 @@ metadata:
   annotations:
     # custom max body size for file uploading like backing image uploading
     nginx.ingress.kubernetes.io/proxy-body-size: 10000m
-    nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
 #    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
@@ -20,4 +19,4 @@ spec:
           service:
             name: powerdns-admin
             port:
-              number: 9494
+              number: 8080

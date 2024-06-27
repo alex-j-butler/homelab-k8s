@@ -4,7 +4,7 @@ metadata:
   name: powerdns-admin-static
   namespace: powerdns
   labels:
-    app: powerdns-admin-static
+    app: powerdns-admin
 spec:
   ports:
   - port: 9494

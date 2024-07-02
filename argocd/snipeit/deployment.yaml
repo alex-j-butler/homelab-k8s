@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: snipeit
-        image: snipe/snipe-it:v6.1.1
+        image: snipe/snipe-it:v7.0.7
         ports:
         - containerPort: 80
         env:

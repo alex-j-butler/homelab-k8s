@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: upwebhook-ingress
+  annotations:
+    nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - upwebhook.alex-j-butler.com
+    secretName: upwebhook-tls
+  rules:
+  - host: upwebhook.alex-j-butler.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: upwebhook-svc
+            port:
+              number: 3000

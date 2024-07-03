@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express
+  labels:
+    app: express
+spec:
+  selector:
+    matchLabels:
+      app: express
+  template:
+    metadata:
+      labels:
+        app: express
+    spec:
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
+      containers:
+      - name: express
+        image: ghcr.io/alex-j-butler/up-actual-webhook:3296720
+        ports:
+        - containerPort: 3000
+        env:
+        - name: BUDGET_TEMP
+          value: "/app/budget-temp"
+        - name: BUDGET_URL
+          value: "https://budget.int.alex-j-butler.com"
+        - name: BUDGET_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: express-secrets
+              key: budget-password
+        - name: BUDGET_ID
+          valueFrom:
+            secretKeyRef:
+              name: express-secrets
+              key: budget-id
+        - name: UP_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: express-secrets
+              key: up-token
+        - name: UP_WEBHOOK_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: express-secrets
+              key: up-webhook-secret
+        volumeMounts:
+        - name: helpers-configmap
+          mountPath: /app/services
+          subPath: helpers-config.js
+      volumes:
+      - name: helpers-configmap
+        configMap:
+          name: helpers-configmap

@@ -13,8 +13,6 @@ spec:
       labels:
         app: express
     spec:
-      imagePullSecrets:
-        - name: dockerconfigjson-github-com
       containers:
       - name: express
         image: ghcr.io/alex-j-butler/up-actual-webhook:3296720

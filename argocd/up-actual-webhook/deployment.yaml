@@ -44,9 +44,9 @@ spec:
               name: express-secrets
               key: up-webhook-secret
         volumeMounts:
-        - name: helpers-configmap
-          mountPath: /app/services
-          subPath: helpers-config.js
+        #- name: helpers-configmap
+        #  mountPath: /app/services
+        #  subPath: helpers-config.js
         command: ["/bin/sh"]
         args: ["-c", "while true; do echo hello; sleep 10;done"]
       volumes:

@@ -45,7 +45,7 @@ spec:
               key: up-webhook-secret
         volumeMounts:
         - name: helpers-configmap
-          mountPath: /app/services/helpers-config.js
+          mountPath: /app/services/helpers_config.js
           subPath: helpers-config.js
       volumes:
       - name: helpers-configmap

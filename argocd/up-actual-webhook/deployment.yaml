@@ -47,6 +47,8 @@ spec:
         - name: helpers-configmap
           mountPath: /app/services
           subPath: helpers-config.js
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do echo hello; sleep 10;done"]
       volumes:
       - name: helpers-configmap
         configMap:

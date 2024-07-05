@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: budget
+  name: actual
+spec:
+  selector:
+    matchLabels:
+      app: actual
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: actual
+    spec:
+      containers:
+        - name: actual
+          image: actualbudget/actual-server:24.7.0
+          ports:
+            - containerPort: 5006
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /data
+              name: actual-pvc
+      volumes:
+        - name: actual-pvc
+          persistentVolumeClaim:
+            claimName: actual-pvc

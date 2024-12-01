@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name: mealie
   labels:
-    name: mealie
+    app: mealie
 spec:
   template:
     metadata:
       labels:
-        name: mealie
+        app: mealie
     spec:
       containers:
       - image: ghcr.io/mealie-recipes/mealie:v2.3.0

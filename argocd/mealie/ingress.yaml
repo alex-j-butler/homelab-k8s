@@ -8,7 +8,7 @@ metadata:
     nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  ingressClassName: nginx
+  ingressClassName: internal-nginx
   tls:
   - hosts:
     - mealie.int.alex-j-butler.com

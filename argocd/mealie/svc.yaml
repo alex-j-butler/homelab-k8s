@@ -6,7 +6,7 @@ metadata:
     app: mealie
 spec:
   ports:
-  - port: 9925
+  - port: 9000
     protocol: TCP
   selector:
     app: mealie

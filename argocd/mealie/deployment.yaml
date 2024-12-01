@@ -44,7 +44,7 @@ spec:
         - name: "BASE_URL"
           value: "https://mealie.int.alex-j-butler.com"
         ports:
-        - containerPort: 9925
+        - containerPort: 9000
           name: http
         volumeMounts:
         - mountPath: /app/data

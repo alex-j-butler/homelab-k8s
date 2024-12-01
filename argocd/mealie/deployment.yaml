@@ -8,6 +8,8 @@ spec:
   selector:
     matchLabels:
       app: mealie
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -52,6 +54,6 @@ spec:
       volumes:
         - name: mealie-data
           persistentVolumeClaim:
-          claimName: mealie-pvc
+            claimName: mealie-pvc
       restartPolicy: Always
       imagePullPolicy: Always

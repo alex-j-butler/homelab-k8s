@@ -5,6 +5,9 @@ metadata:
   labels:
     app: mealie
 spec:
+  selector:
+    matchLabels:
+      app: frontend
   template:
     metadata:
       labels:

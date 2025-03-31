@@ -25,7 +25,7 @@ spec:
         - name: dockerconfigjson-github-com
       initContainers:
       - name: init-bookstack-volume
-        image: busybox:1.36
+        image: busybox:1.37
         env:
           - name: APP_KEY
             valueFrom:
